@@ -28,7 +28,7 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', routes)
-app.use('/paid', paid)
+app.use('/articles', paid)
 
 app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
   let err = new Error('Not Found');

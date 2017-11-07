@@ -4,10 +4,10 @@ if (!PAYWALL_ADDRESS) { throw new Error('Please, set RECEIVER env variable') }
 const PAYWALL_GATEWAY = process.env.GATEWAY_URL
 if (!PAYWALL_GATEWAY) { throw new Error('Please, set GATEWAY_URL env variable') }
 
-export function paywallHeaders (): object {
+export function paywallHeaders (price: string = '1'): object {
   let headers: { [index: string]: string } = {}
   headers['Paywall-Version'] = '0.0.3'
-  headers['Paywall-Price'] = '1'
+  headers['Paywall-Price'] = price
   headers['Paywall-Address'] = PAYWALL_ADDRESS
   headers['Paywall-Gateway'] = PAYWALL_GATEWAY + '/v1/accept'
   headers['Paywall-Meta'] = 'contentidexample'

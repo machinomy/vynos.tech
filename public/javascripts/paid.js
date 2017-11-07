@@ -3,7 +3,7 @@ document.write('<script src="' + window.VYNOS_URL + '"></script>')
 let loadContent = (token) => {
 	$.ajax({
 		type: 'GET',
-		url: "/paid/content",
+		url: window.location.pathname + '/content',
 		headers: {
 			authorization: `paywall ${token}`
 		}

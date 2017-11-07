@@ -27,32 +27,35 @@ const parseToken = (req: express.Request, callback: Function) => {
   }
 }
 
-router.get('/', (req: express.Request, res: express.Response, next: express.NextFunction): any => {
-  res.render('paid')
+const PRICES = {
+  'the_exiles': '1000000',
+  'the_pedestrian': '2000000',
+  'the_veldt': '3000000',
+  'there_will_come_soft_rains': '4000000'}
+
+router.get('/:id', (req: express.Request, res: express.Response, next: express.NextFunction): any => {
+  res.render(req.params.id + '/index')
 })
 
-router.get('/erc20', (req: express.Request, res: express.Response, next: express.NextFunction): any => {
-  res.status(402).set(paywallHeadersERC20()).sendFile('./views/paid.html', { root: '.' })
-})
-
-router.get('/content', function(req: express.Request, res: express.Response, next: express.NextFunction) {
+router.get('/:id/content', function(req: express.Request, res: express.Response, next: express.NextFunction) {
   let reqUrl = PAYWALL_GATEWAY
+  const headers = paywallHeaders(PRICES[req.params.id])
   parseToken(req, (error: Error, token: string) => {
     if (error) {
-      res.set(paywallHeaders()).render('bitch', {layout: false})
+      res.set(headers).render(req.params.id + '/free', {layout: false})
       return
     }
-    let price = paywallHeaders()['Paywall-Price']
-    let meta = paywallHeaders()['Paywall-Meta']
+    let price = headers['Paywall-Price']
+    let meta = headers['Paywall-Meta']
     request({
       method: 'GET',
       uri: reqUrl + '?' + `token=${token}&price=${price}&meta=${meta}`
     }).then((response: RequestResponse) => {
       let status = JSON.parse(response.body).status
       if (status === 'ok') {
-        res.render('rich', {layout: false})
+        res.render(req.params.id + '/full', {layout: false})
       } else {
-        res.set(paywallHeaders()).render('bitch', {layout: false})
+        res.set(headers).render(req.params.id + '/free', {layout: false})
       }
     })
   })
