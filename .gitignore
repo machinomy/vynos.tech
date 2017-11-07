@@ -1,0 +1,40 @@
+# OS X
+.DS_Store*
+.env
+Icon?
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+.directory
+*~
+
+
+# npm
+node_modules
+*.log
+*.gz
+
+
+# Coveralls
+coverage
+
+# Benchmarking
+benchmarks/graphs
+
+#vagrant
+.vagrant
+
+config
+app.js
+helpers/**/*.js
+bin/**/*.js
+public/**/*.bundle.js
+routes/**/*.js
+deploy/build
+
+.vscode/
