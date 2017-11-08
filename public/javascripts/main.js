@@ -68,5 +68,5 @@ window.addEventListener('load', () => {
 	getEtherBlock = $('#getEtherBlock');
 	listTransactions = $('#listTransactions');
 	testBuy = $('#testBuy');
-	setInterval(updateStats, 200)
+	setInterval(updateStats, 20000)
 })
