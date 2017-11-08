@@ -10,7 +10,6 @@ var gulp       = require('gulp'), // Подключаем Gulp
     pngquant     = require('imagemin-pngquant'), // Подключаем библиотеку для работы с png
     cache        = require('gulp-cache'), // Подключаем библиотеку кеширования
     autoprefixer = require('gulp-autoprefixer'),// Подключаем библиотеку для автоматического добавления префиксов
-    // gulpJquery  = require('gulp-jquery'), // Подключаем jquery
     includeSources = require('gulp-include-source');
 
 gulp.task('scss', function(){ // Создаем таск scss
@@ -37,16 +36,6 @@ gulp.task('browser-sync', function() { // Создаем таск browser-sync
     });
 });
 
-gulp.task('scripts', function() {
-    return gulp.src([ // Берем все необходимые библиотеки
-        'app/libs/jquery/dist/jquery.min.js', // Берем jQuery
-        'app/libs/magnific-popup/dist/jquery.magnific-popup.min.js' // Берем Magnific Popup
-        ])
-        .pipe(concat('libs.min.js')) // Собираем их в кучу в новом файле libs.min.js
-        .pipe(uglify()) // Сжимаем JS файл
-        .pipe(gulp.dest('app/js')); // Выгружаем в папку app/js
-});
-
 gulp.task('css-libs', ['scss'], function() {
     return gulp.src('app/css/main.css') // Выбираем файл для минификации
         .pipe(cssnano()) // Сжимаем
@@ -54,10 +43,9 @@ gulp.task('css-libs', ['scss'], function() {
         .pipe(gulp.dest('app/css')); // Выгружаем в папку app/css
 });
 
-gulp.task('watch', ['browser-sync', 'css-libs', 'scripts'], function() {
+gulp.task('watch', ['browser-sync', 'css-libs'], function() {
     gulp.watch('app/scss/*/*.scss', ['scss']); // Наблюдение за scss файлами в папке scss
     gulp.watch('app/*.html', browserSync.reload); // Наблюдение за HTML файлами в корне проекта
-    gulp.watch('app/js/*.js', browserSync.reload);   // Наблюдение за JS файлами в папке js
 });
 
 gulp.task('clean', function() {

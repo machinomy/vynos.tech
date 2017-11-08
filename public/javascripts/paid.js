@@ -28,20 +28,22 @@ if (buyButton) {
   buyButton.onclick = () => {
     console.log('beforeBuy')
     vynos.ready().then(wallet => {
-      let title = 'Outline'
-      let receiver = window.paywallAddress
-      let amount = window.paywallPrice
-			let gateway = window.paywallGateway
-			let meta = window.paywallMeta
+	    wallet.getAccount().then(account => {
+		    if (!account) return vynos.display();
+		    let title = 'Outline'
+		    let receiver = window.paywallAddress
+		    let amount = window.paywallPrice
+		    let gateway = window.paywallGateway
+		    let meta = window.paywallMeta
 
-      return wallet.buy(receiver, amount, gateway, meta)
-    }).then(result => {
-      loadContent(result.token)
-      channelsBalance()
-      console.log('Result: ', result)
-      buyButton.style.display = 'none'
-    }).catch(err => {
-      console.log('Err: ', err)
+		    return wallet.buy(receiver, amount, gateway, meta)
+	    }).then(result => {
+		    loadContent(result.token)
+		    console.log('Result: ', result)
+		    buyButton.style.display = 'none'
+	    }).catch(err => {
+		    console.log('Err: ', err)
+	    })
     })
   }
 }
