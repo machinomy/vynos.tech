@@ -38,28 +38,27 @@
     "typescript": "2.4.1",
     "uglifyjs-webpack-plugin": "^1.0.0-beta.3",
     "web3": "^0.19.0",
-    "web3-typescript-typings": "^0.3.1",
+    "web3-typescript-typings": "^0.7.1",
     "webpack": "^3.4.1"
   },
   "devDependencies": {
+    "browser-sync": "^2.11.1",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
-    "gulp-copy": "^1.0.0",
-    "gulp-nodemon": "^2.2.1",
-    "gulp-typescript": "^3.1.4",
-    "tslint-config-standard": "^2.0.0",
-    "browser-sync": "^2.11.1",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-cache": "^0.4.2",
     "gulp-concat": "^2.6.0",
+    "gulp-copy": "^1.0.0",
     "gulp-cssnano": "^2.1.1",
     "gulp-imagemin": "^2.4.0",
     "gulp-include-source": "0.0.5",
+    "gulp-nodemon": "^2.2.1",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.2.0",
+    "gulp-typescript": "^3.1.4",
     "gulp-uglifyjs": "^0.6.2",
-    "imagemin-pngquant": "^4.2.2"
-
+    "imagemin-pngquant": "^4.2.2",
+    "tslint-config-standard": "^2.0.0"
   },
   "name": "bred1"
 }
