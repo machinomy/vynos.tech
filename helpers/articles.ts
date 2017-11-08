@@ -7,7 +7,7 @@ const ARTICLES = {
       price: '1000000',
       priceHuman: 'for ' + web3.fromWei('1000000', 'kwei') + 'kWei',
       url: 'https://vynos.tech/articles/the_exiles',
-      image: '/images/tigers.png'
+      image: '/images/the_exiles.jpeg'
     },
     'the_pedestrian': {
       title: 'The pedestrian',
@@ -15,7 +15,7 @@ const ARTICLES = {
       price: '2000000',
       priceHuman: 'for ' + web3.fromWei('2000000', 'kwei') + 'kWei',    
       url: 'https://vynos.tech/articles/the_pedestrian',
-      image: '/images/tigers.png'
+      image: '/images/the_pedestrian.jpeg'
     },
     'the_veldt': {
       title: 'The veldt',
@@ -31,7 +31,7 @@ const ARTICLES = {
       price: '4000000',
       priceHuman: 'for ' + web3.fromWei('4000000', 'kwei') + 'kWei',    
       url: 'https://vynos.tech/articles/there_will_come_soft_rains',
-      image: '/images/tigers.png'
+      image: '/images/rains.jpeg'
     }
   }
 
