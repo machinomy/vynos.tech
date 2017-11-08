@@ -7,6 +7,7 @@ import { paywallHeaders, paywallHeadersERC20 } from '../helpers/headers'
 import Promise = require('bluebird')
 import { RequestResponse, RequiredUriUrl, CoreOptions } from 'request'
 const request: (opts: RequiredUriUrl & CoreOptions) => Promise<RequestResponse> = Promise.promisify(require('request'))
+import ARTICLES from '../helpers/articles'
 
 const PAYWALL_GATEWAY = process.env.GATEWAY_URL + '/v1/verify'
 if (!PAYWALL_GATEWAY) { throw new Error('Please, set GATEWAY_URL env variable') }
@@ -27,19 +28,13 @@ const parseToken = (req: express.Request, callback: Function) => {
   }
 }
 
-const PRICES = {
-  'the_exiles': '1000000',
-  'the_pedestrian': '2000000',
-  'the_veldt': '3000000',
-  'there_will_come_soft_rains': '4000000'}
-
 router.get('/:id', (req: express.Request, res: express.Response, next: express.NextFunction): any => {
-  res.render('article')
+  res.render('article', ARTICLES[req.params.id])
 })
 
 router.get('/:id/content', function(req: express.Request, res: express.Response, next: express.NextFunction) {
   let reqUrl = PAYWALL_GATEWAY
-  const headers = paywallHeaders(PRICES[req.params.id])
+  const headers = paywallHeaders(ARTICLES[req.params.id].price)
   parseToken(req, (error: Error, token: string) => {
     if (error) {
       res.set(headers).render(req.params.id + '/free', {layout: false})
