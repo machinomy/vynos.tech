@@ -1,0 +1,36 @@
+.b-line {
+  padding: 2em 0;
+
+  &_gradient {
+    color: white;
+    background: linear-gradient(-90deg, #D04373 0%, #00AEEF 100%);
+  }
+
+  &_light-gradient {
+    background: linear-gradient(90deg, rgba(0,174,239,0.2) 0%, rgba(208,67,115,0.2) 100%);
+  }
+
+  &_white {
+    background: white;
+  }
+
+  &_disabled {
+    position: relative;
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 10;
+      background: rgba(255,255,255,0.9);
+    }
+  }
+
+  &_center {
+    text-align: center;
+  }
+
+}

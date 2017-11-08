@@ -1,0 +1,39 @@
+@import "./basic/body.scss";
+@import "./basic/fonts.scss";
+@import "./g-wrapper/g-wrapper.scss";
+@import "./g-header/g-header.scss";
+@import "./g-footer/g-footer.scss";
+@import "./b-home-top/b-home-top.scss";
+@import "./b-advantages/b-advantages.scss";
+@import "./b-article/b-article.scss";
+@import "./b-form/b-form.scss";
+@import "./b-button/b-button.scss";
+@import "./b-line/b-line.scss";
+@import "./b-novel/b-novel.scss";
+@import "./l-novel/l-novel.scss";
+@import "./h1/h1.scss";
+@import "./h2/h2.scss";
+@import "./h3/h3.scss";
+@import "./h4/h4.scss";
+@import "./h5/h5.scss";
+@import "./h6/h6.scss";
+
+@media screen and (max-width: 768px) {
+	// mobile
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+	// tablet
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1280px) {
+	// small desktop
+}
+
+@media screen and (min-width: 1280px) and (max-width: 1440px) {
+	// middle desktop
+}
+
+@media screen and (min-width: 1440px) {
+	// large desktop
+}

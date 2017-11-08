@@ -1,0 +1,24 @@
+.b-home-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__content {
+    flex-basis: 66%;
+    padding-right: 5%;
+
+    p {
+      padding: 10px 0;
+    }
+  }
+
+  &__title {
+    span {
+      color: #D04373;
+    }
+  }
+
+  &__image {
+    flex-basis: 33%;
+  }
+}

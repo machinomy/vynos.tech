@@ -1,0 +1,64 @@
+.b-article {
+
+  &__header {
+    position: relative;
+  }
+
+  &__logo {
+  }
+
+  &__image {
+    font-size: 0;
+    position: relative;
+    z-index: 1;
+
+    img{
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+
+    .h1 {
+      color: white;
+    }
+  }
+
+  &__content {
+    padding: 5em 0 2.5em;
+  }
+
+  &__meta {
+    padding: 2.5em 0 5em;
+  }
+
+  &__read-more {
+    margin-right: 20px;
+  }
+
+  &__for {
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+
+  &__backhome {
+    display: block;
+    margin-bottom: 8em;
+    text-transform: uppercase;
+    color: #333333;
+    font-size: 24px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    letter-spacing: 2px;
+
+    &:hover{
+      opacity: 0.8;
+    }
+  }
+}

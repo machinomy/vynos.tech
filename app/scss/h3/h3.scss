@@ -1,0 +1,12 @@
+.h3 {
+  font: bold 42px "Alegreya";
+  margin: 10px 0;
+
+  &_center {
+    text-align: center;
+  }
+
+  &_light {
+    font-weight: lighter;
+  }
+}

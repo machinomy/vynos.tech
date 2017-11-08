@@ -4,7 +4,7 @@
   "scripts": {
     "start": "yarn build && webpack && node bin/www.js",
     "build": "tsc -p tsconfig.json && webpack",
-    "lint": "tslint -t stylish -p '.' -e './node_modules/**/*.ts'"    
+    "lint": "tslint -t stylish -p '.' -e './node_modules/**/*.ts'"
   },
   "dependencies": {
     "@types/bignumber.js": "^4.0.3",
@@ -47,7 +47,19 @@
     "gulp-copy": "^1.0.0",
     "gulp-nodemon": "^2.2.1",
     "gulp-typescript": "^3.1.4",
-    "tslint-config-standard": "^2.0.0"
+    "tslint-config-standard": "^2.0.0",
+    "browser-sync": "^2.11.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-cache": "^0.4.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-cssnano": "^2.1.1",
+    "gulp-imagemin": "^2.4.0",
+    "gulp-include-source": "0.0.5",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.2.0",
+    "gulp-uglifyjs": "^0.6.2",
+    "imagemin-pngquant": "^4.2.2"
+
   },
   "name": "bred1"
 }

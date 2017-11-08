@@ -1,0 +1,9 @@
+.l-novel {
+  margin: 15px 0;
+  display: flex;
+
+  &__item {
+    flex-basis: 25%;
+    padding: 0 2%;
+  }
+}

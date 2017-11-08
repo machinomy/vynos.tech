@@ -1,0 +1,40 @@
+.b-advantages {
+  display: flex;
+  justify-content: space-between;
+
+  &__item {
+    padding: 1em 0;
+    flex-basis: 30%;
+    text-align: center;
+  }
+
+  &__icon {
+    width: 90px;
+    height: 90px;
+    display: block;
+    margin: 0 auto 30px;
+    opacity: 0.5;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    &_rocket {
+      background-image: url(../../images/rocket.svg);
+      background-size: contain;
+    }
+
+    &_lock {
+      background-image: url(../../images/lock.svg);
+      background-size: contain;
+    }
+
+    &_wine {
+      background-image: url(../../images/wine.svg);
+      background-size: contain;
+    }
+  }
+
+  &__content {
+
+  }
+
+}

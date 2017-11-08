@@ -1,0 +1,27 @@
+.b-button {
+  display: inline-block;
+  background: #00AEEF;
+  color: white;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  width: 190px;
+  text-decoration: none;
+  height: 45px;
+  line-height: 45px;
+  white-space: nowrap;
+  font-size: 14px;
+  border: 0;
+  text-align: center;
+  transition: all 0.2s ease;
+  cursor: pointer;
+
+  &:hover{
+    background: lighten(#00AEEF, 3%);
+  }
+
+  &:active,
+  &:focus{
+    background: lighten(#00AEEF, 12%);
+  }
+}

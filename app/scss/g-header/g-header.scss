@@ -1,0 +1,29 @@
+.g-header {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  width: 100%;
+  z-index: 10;
+
+  &__logo {
+    display: block;
+    width: 250px;
+    background: rgba(255,255,255,0.7);
+    height: 65px;
+    float: right;
+    position: relative;
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      left: 50%;
+      top: 4px;
+      margin-left: -32px;
+      width: 65px;
+      height: 65px;
+      background: url(../../images/logo.svg) center no-repeat;
+      background-size: contain;
+    }
+  }
+}

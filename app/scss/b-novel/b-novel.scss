@@ -1,0 +1,44 @@
+.b-novel {
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  font-size: 0;
+
+  &__link {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    opacity: 0;
+  }
+
+  &__image {
+    position: relative;
+    z-index: 1;
+
+    img{
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__title {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+    padding: 10px;
+    font-size: 36px;
+    color: white;
+    text-align: left;
+    font-weight: bold;
+
+    &_middle{
+      bottom: auto;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+}
