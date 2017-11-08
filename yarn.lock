@@ -6767,9 +6767,9 @@ watchpack@^1.4.0:
     chokidar "^1.7.0"
     graceful-fs "^4.1.2"
 
-web3-typescript-typings@^0.3.1:
-  version "0.3.4"
-  resolved "https://registry.yarnpkg.com/web3-typescript-typings/-/web3-typescript-typings-0.3.4.tgz#1868dd2483127d8db9b17d6a7c94cc1f7cfa6a62"
+web3-typescript-typings@^0.7.1:
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/web3-typescript-typings/-/web3-typescript-typings-0.7.1.tgz#4b1145b9fd7e80292c2ab6b75e2359cf95f0efe1"
   dependencies:
     bignumber.js "^4.0.2"
 
