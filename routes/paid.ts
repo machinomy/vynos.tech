@@ -34,7 +34,7 @@ const PRICES = {
   'there_will_come_soft_rains': '4000000'}
 
 router.get('/:id', (req: express.Request, res: express.Response, next: express.NextFunction): any => {
-  res.render(req.params.id + '/index')
+  res.render('article')
 })
 
 router.get('/:id/content', function(req: express.Request, res: express.Response, next: express.NextFunction) {
