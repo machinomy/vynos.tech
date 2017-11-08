@@ -12,6 +12,7 @@
         <img src="images/home-promo.png" />
       </div>
     </div>
+  </div>
 </section>
 
 <section class="b-line b-line_gradient">
@@ -42,29 +43,22 @@
   </div>
 </section>
 
-<section class="b-line b-line_light-gradient b-line_center">
+<section id="createAccount" class="b-line b-line_light-gradient b-line_center b-line_disabled">
   <div class="g-wrapper">
     <h2 class="h4">Create an account in Vynos web wallet</h2>
-    <a class="b-button" href="#">Create account</a>
+    <a class="b-button" href="#" onclick="return vynosDisplay()">Create account</a>
   </div>
 </section>
 
-<section class="b-line b-line_light-gradient b-line_disabled b-line_center">
-  <div class="g-wrapper">
-    <h2 class="h4">Create an account in Vynos web wallet</h2>
-    <a class="b-button" href="#">Create account</a>
-  </div>
-</section>
-
-<section class="b-line b-line_center">
+<section id="getEtherBlock" class="b-line b-line_center b-line_disabled">
   <div class="g-wrapper">
     <h2 class="h4">Refill the account with testnet Ether</h2>
-    <a class="b-button" href="#">GET 0.1 ETHER</a>
-    <p class="small blue margins">0xa236f4a18229915d4b632583400b5eb553a77998353c5bfd2014dc78d2c6b76e</p>
+    <a class="b-button" href="#" onclick="return getEther()">GET 0.1 ETHER</a>
+      <div id="listTransactions"></div>
   </div>
 </section>
 
-<section class="b-line b-line_center">
+<section id="testBuy" class="b-line b-line_center b-line_disabled">
   <div class="g-wrapper">
     <h2 class="h4">Experience reading a novel</h2>
     <div class="l-novel">
@@ -94,7 +88,7 @@
           <div class="b-novel__image">
             <img src="images/novel2.png" />
           </div>
-          <div class="b-novel__title">The 
+          <div class="b-novel__title">The
             <br/>Exiles</div>
         </div>
       </div>
@@ -105,10 +99,10 @@
             <img src="images/novel2.png" />
           </div>
           <div class="b-novel__title">There
-            <br/>Will 
-            <br/>Come 
-            <br/>Soft 
-            <br/>Rains 
+            <br/>Will
+            <br/>Come
+            <br/>Soft
+            <br/>Rains
             </div>
         </div>
       </div>
@@ -142,3 +136,4 @@
       <br/>Please be in touch: welcome@machinomy.com</p>
   </div>
 </section>
+<script src="/javascripts/main.bundle.js"></script>

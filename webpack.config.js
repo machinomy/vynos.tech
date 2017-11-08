@@ -22,6 +22,7 @@ module.exports = {
     entry: {
         faucet: './faucet.js',
         paid: './paid.js',
+        main: './main.js',
     },
     output: {
         path: distPath,

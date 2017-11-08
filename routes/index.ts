@@ -19,7 +19,7 @@ router.get('/faucet', (req: express.Request, res: express.Response, next: expres
 
 router.post('/faucet/request', function(req: express.Request, res: express.Response, next: express.NextFunction) {
   let callFaucet = (address: string, callback: (err: Error, value: string) => void) => {
-    web3.personal.unlockAccount(FAUCET_ACCOUNT, FAUCET_PASSWORD, 10000000)
+    if(web3.personal) web3.personal.unlockAccount(FAUCET_ACCOUNT, FAUCET_PASSWORD, 10000000)
     web3.eth.sendTransaction({from: FAUCET_ACCOUNT, to: address, value: web3.toWei(0.01, 'ether')}, callback)
   }
   let address = req.body.address
