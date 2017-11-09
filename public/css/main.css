@@ -18,7 +18,8 @@ p {
   color: #00AEEF; }
 
 .disabled {
-  opacity: 0.45; }
+  opacity: 0.45;
+  cursor: not-allowed; }
 
 @font-face {
   font-family: 'Source Sans Pro';
