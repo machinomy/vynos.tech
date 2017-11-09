@@ -26,7 +26,7 @@ if (displayButton) {
 let buyButton = document.getElementById('buy')
 if (buyButton) {
   buyButton.onclick = () => {
-    console.log('beforeBuy')
+		$(buyButton).addClass('disabled').html("Loading...");
     vynos.ready().then(wallet => {
 	    wallet.getAccount().then(account => {
 		    if (!account) return vynos.display();

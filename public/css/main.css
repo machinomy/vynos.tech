@@ -17,6 +17,9 @@ p {
 .blue {
   color: #00AEEF; }
 
+.disabled {
+  opacity: 0.45; }
+
 @font-face {
   font-family: 'Source Sans Pro';
   src: local("../fonts/SourceSansProExtraLight"), local("../fonts/SourceSansPro-ExtraLight"), url("../fonts/sourcesansproextralight.woff2") format("woff2"), url("../fonts/sourcesansproextralight.woff") format("woff"), url("../fonts/sourcesansproextralight.ttf") format("truetype");
