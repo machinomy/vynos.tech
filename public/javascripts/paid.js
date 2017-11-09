@@ -55,7 +55,21 @@ if (buyButton) {
   }
 }
 
+window.vynosDisplay = function () {
+	vynos.ready().then(() => {
+		vynos.display();
+	});
+	return false;
+};
+
 window.addEventListener('load', () => {
 	let contentKey = $('meta[property="og:url"]').attr('content')
   loadContent(localStorage[contentKey])
+	vynos.ready().then(() => {
+		vynos.setContainerStyle({right: 'auto', left: document.getElementById('header__logo').offsetLeft + 'px'});
+	});
+})
+
+window.addEventListener('resize', () => {
+	vynos.setContainerStyle({right: 'auto', left: document.getElementById('header__logo').offsetLeft + 'px'});
 })
