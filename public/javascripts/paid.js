@@ -28,6 +28,11 @@ if (displayButton) {
 	}
 }
 
+function canBeHandled(message) {
+    message.indexOf('doesn\'t have enough funds to send') !== -1 ||
+		message.indexOf('insufficient funds') !== -1
+}
+
 let buyButton = document.getElementById('buy')
 if (buyButton) {
   buyButton.onclick = () => {
@@ -50,8 +55,8 @@ if (buyButton) {
 		    console.log('Result: ', result)
 		    buyButton.style.display = 'none'
 	    }).catch(err => {
-		    console.error('Err: ', err)
-	    	if(err.message && err.message.indexOf('doesn\'t have enough funds to send') !== -1) showVynosNotification('Doesn\'t have enough funds to buy', 10);
+		    console.error(err)
+	    	if(err.message && canBeHandled(err.message)) showVynosNotification('Not enough funds, please refill the wallet', 10);
 		    $(buyButton).removeClass('disabled').attr('disabled', false).html("READ MORE");
 	    })
     })
