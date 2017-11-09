@@ -12,6 +12,11 @@ let loadContent = (token) => {
 		window.paywallGateway = response.getResponseHeader('paywall-gateway')
 		window.paywallPrice = response.getResponseHeader('paywall-price')
 		window.paywallAddress = response.getResponseHeader('paywall-address')
+
+		if(!window.paywallPrice) {
+			$('#buy').hide()
+			$('.b-article__for').hide()
+		}
 		$("#content").html(data);
 	})
 }
@@ -26,7 +31,7 @@ if (displayButton) {
 let buyButton = document.getElementById('buy')
 if (buyButton) {
   buyButton.onclick = () => {
-		$(buyButton).addClass('disabled').html("Loading...");
+		$(buyButton).addClass('disabled').html("Loading...")
     vynos.ready().then(wallet => {
 	    wallet.getAccount().then(account => {
 		    if (!account) return vynos.display();
@@ -38,6 +43,8 @@ if (buyButton) {
 
 		    return wallet.buy(receiver, amount, gateway, meta)
 	    }).then(result => {
+				let contentKey = $('meta[property="og:url"]').attr('content')
+				localStorage[contentKey] = result.token
 		    loadContent(result.token)
 		    console.log('Result: ', result)
 		    buyButton.style.display = 'none'
@@ -49,5 +56,6 @@ if (buyButton) {
 }
 
 window.addEventListener('load', () => {
-  loadContent()
+	let contentKey = $('meta[property="og:url"]').attr('content')
+  loadContent(localStorage[contentKey])
 })
