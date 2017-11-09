@@ -31,19 +31,29 @@ function getEther() {
 	return false;
 }
 
+function disableBlock(block) {
+    block.addClass('b-line_disabled');
+    block.removeClass('b-line_light-gradient')
+}
+
+function enableBlock(block) {
+    block.removeClass('b-line_disabled');
+    block.addClass('b-line_light-gradient')
+}
+
 function showOrHideBlocks(account, balance) {
 	if (!account) {
-		if (createAccount.hasClass('b-line_disabled')) createAccount.removeClass('b-line_disabled');
-		if (!getEtherBlock.hasClass('b-line_disabled')) getEtherBlock.addClass('b-line_disabled');
-		if (!testBuy.hasClass('b-line_disabled')) testBuy.addClass('b-line_disabled');
+		if (createAccount.hasClass('b-line_disabled')) enableBlock(createAccount);
+		if (!getEtherBlock.hasClass('b-line_disabled')) disableBlock(getEtherBlock);
+		if (!testBuy.hasClass('b-line_disabled')) disableBlock(testBuy);
 	} else if (account) {
-		if (!createAccount.hasClass('b-line_disabled')) createAccount.addClass('b-line_disabled');
+		if (!createAccount.hasClass('b-line_disabled')) disableBlock(createAccount);
 		if (balance >= MIN_BALANCE) {
-			if (!getEtherBlock.hasClass('b-line_disabled')) getEtherBlock.addClass('b-line_disabled');
-			if (testBuy.hasClass('b-line_disabled')) testBuy.removeClass('b-line_disabled');
+			if (!getEtherBlock.hasClass('b-line_disabled')) disableBlock(getEtherBlock);
+			if (testBuy.hasClass('b-line_disabled')) enableBlock(testBuy);
 		} else {
-			if (getEtherBlock.hasClass('b-line_disabled')) getEtherBlock.removeClass('b-line_disabled');
-			if (!testBuy.hasClass('b-line_disabled')) testBuy.addClass('b-line_disabled');
+			if (getEtherBlock.hasClass('b-line_disabled')) enableBlock(getEtherBlock);
+			if (!testBuy.hasClass('b-line_disabled')) disableBlock(testBuy);
 		}
 	}
 }
