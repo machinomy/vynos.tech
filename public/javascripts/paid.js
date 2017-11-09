@@ -43,13 +43,16 @@ if (buyButton) {
 
 		    return wallet.buy(receiver, amount, gateway, meta)
 	    }).then(result => {
-				let contentKey = $('meta[property="og:url"]').attr('content')
-				localStorage[contentKey] = result.token
+	    	if(!result) return Promise.reject('vynos locked');
+			let contentKey = $('meta[property="og:url"]').attr('content')
+			localStorage[contentKey] = result.token
 		    loadContent(result.token)
 		    console.log('Result: ', result)
 		    buyButton.style.display = 'none'
 	    }).catch(err => {
-		    console.log('Err: ', err)
+		    console.error('Err: ', err)
+	    	if(err.message && err.message.indexOf('doesn\'t have enough funds to send') !== -1) showVynosNotification('Doesn\'t have enough funds to buy', 10);
+		    $(buyButton).removeClass('disabled').attr('disabled', false).html("READ MORE");
 	    })
     })
   }
