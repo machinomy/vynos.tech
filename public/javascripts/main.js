@@ -14,7 +14,6 @@ function vynosDisplay() {
 
 function getEther() {
 	vynos.ready().then(wallet => {
-		let web3 = new Web3(wallet.provider)
 		wallet.getAccount().then(account => {
 			$.ajax({
 				type: 'POST',
@@ -24,7 +23,7 @@ function getEther() {
 				success: function (data) {
 					let txid = data.txid;
 					let etherscanUrl = 'https://ropsten.etherscan.io/tx/' + txid;
-					listTransactions.append('<p class="small blue margins"><a href="'+ etherscanUrl +'" target="_blank">' + txid + '</a></p>');
+					listTransactions.append('<p class="small blue margins"><a href="' + etherscanUrl + '" target="_blank">' + txid + '</a></p>');
 				}
 			})
 		});
@@ -51,7 +50,7 @@ function showOrHideBlocks(account, balance) {
 
 function updateStats() {
 	vynos.ready().then(wallet => {
-		let web3 = new Web3(wallet.provider)		
+		let web3 = new Web3(wallet.provider)
 		wallet.getAccount().then(account => {
 			if (!account) return showOrHideBlocks(null);
 			web3.eth.getBalance(account, (err, balance) => {
@@ -70,4 +69,14 @@ window.addEventListener('load', () => {
 	listTransactions = $('#listTransactions');
 	testBuy = $('#testBuy');
 	setInterval(updateStats, 200)
+	vynos.ready().then(() => {
+		vynos.setContainerStyle({right: 'auto', left: document.getElementById('svg_logo').offsetLeft + 'px'});
+		if ($(window).scrollTop() < 605) {
+			vynos.display()
+		}
+	});
+})
+
+window.addEventListener('resize', () => {
+	vynos.setContainerStyle({right: 'auto', left: document.getElementById('svg_logo').offsetLeft + 'px'});
 })
