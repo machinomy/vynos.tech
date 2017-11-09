@@ -17,6 +17,9 @@ if (!GATEWAY_URL) throw new Error('Please, set gateway url to GATEWAY_URL env va
 const VYNOS_URL = process.env.VYNOS_URL;
 if (!VYNOS_URL) throw new Error('Please, set url to Vynos to VYNOS_URL env variable')
 
+const ETHEREUM_API = process.env.ETHEREUM_API;
+if (!ETHEREUM_API) throw new Error('Please, set ETHEREUM_API env variable')
+
 module.exports = {
     context: srcPath,
     entry: {
@@ -36,7 +39,8 @@ module.exports = {
         new webpack.DefinePlugin({
             "window.RECEIVER": JSON.stringify(RECEIVER),
             "window.GATEWAY_URL": JSON.stringify(GATEWAY_URL),
-            "window.VYNOS_URL": JSON.stringify(VYNOS_URL)
+            "window.VYNOS_URL": JSON.stringify(VYNOS_URL),
+            "window.ETHEREUM_API": JSON.stringify(ETHEREUM_API)
         })
     ],
     module: {
