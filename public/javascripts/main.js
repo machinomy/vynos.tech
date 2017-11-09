@@ -14,7 +14,7 @@ function vynosDisplay() {
 
 function getEther() {
 	vynos.ready().then(wallet => {
-		let web3 = new Web3(new Web3.providers.HttpProvider(wallet.provider))
+		let web3 = new Web3(wallet.provider)
 		wallet.getAccount().then(account => {
 			$.ajax({
 				type: 'POST',
@@ -51,7 +51,8 @@ function showOrHideBlocks(account, balance) {
 
 function updateStats() {
 	vynos.ready().then(wallet => {
-		let web3 = new Web3(new Web3.providers.HttpProvider(wallet.provider))		
+		console.log(wallet.provider)		
+		let web3 = new Web3(wallet.provider)		
 		wallet.getAccount().then(account => {
 			if (!account) return showOrHideBlocks(null);
 			web3.eth.getBalance(account, (err, balance) => {
