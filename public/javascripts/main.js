@@ -3,7 +3,6 @@ document.write('<script src="' + window.VYNOS_URL + '"></script>')
 const Web3 = require('web3');
 const MIN_BALANCE = 0.01;
 
-let web3 = new Web3(new Web3.providers.HttpProvider(window.ETHEREUM_API));
 let createAccount, getEtherBlock, listTransactions, testBuy;
 
 function vynosDisplay() {
@@ -15,6 +14,7 @@ function vynosDisplay() {
 
 function getEther() {
 	vynos.ready().then(wallet => {
+		let web3 = new Web3(new Web3.providers.HttpProvider(wallet.provider))
 		wallet.getAccount().then(account => {
 			$.ajax({
 				type: 'POST',
@@ -51,6 +51,7 @@ function showOrHideBlocks(account, balance) {
 
 function updateStats() {
 	vynos.ready().then(wallet => {
+		let web3 = new Web3(new Web3.providers.HttpProvider(wallet.provider))		
 		wallet.getAccount().then(account => {
 			if (!account) return showOrHideBlocks(null);
 			web3.eth.getBalance(account, (err, balance) => {
