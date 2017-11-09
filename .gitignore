@@ -38,3 +38,5 @@ routes/**/*.js
 deploy/build
 
 .vscode/
+
+public/css/main.css
