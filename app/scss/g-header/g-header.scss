@@ -8,22 +8,31 @@
 
   &__logo {
     display: block;
-    width: 250px;
+    width: 320px;
     background: rgba(255,255,255,0.7);
     height: 65px;
     float: right;
     position: relative;
+    text-align: center;
+    line-height: 65px;
+    font-size: 28px;
+    font-family: "Alegreya Sans", sans-serif;
+    color: rgb(208, 64, 113);
+    text-decoration: none;
     &:before {
       content: "";
       display: block;
       position: absolute;
-      left: 50%;
       top: 4px;
+      left: calc(50% - 41px);
       margin-left: -32px;
       width: 65px;
       height: 65px;
       background: url(../../images/logo.svg) center no-repeat;
       background-size: contain;
+    }
+    span {
+      margin-left: 30px;
     }
   }
 }
