@@ -1,7 +1,7 @@
 document.write('<script src="' + window.VYNOS_URL + '"></script>')
 
 const Web3 = require('web3');
-const MIN_BALANCE = 0.1;
+const MIN_BALANCE = 0.07;
 
 let createAccount, getEtherBlock, listTransactions, testBuy;
 
