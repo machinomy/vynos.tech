@@ -23,7 +23,7 @@ const ARTICLES = {
       price: '3000000',
       priceHuman: 'for ' + web3.fromWei('3000000', 'kwei') + 'kWei',    
       url: 'https://vynos.tech/articles/the_veldt',
-      image: '/images/tigers.png'
+      image: '/images/tigers.jpeg'
     },
     'there_will_come_soft_rains': {
       title: 'There Will Come Soft Rains',
