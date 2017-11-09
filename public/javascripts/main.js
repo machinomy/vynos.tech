@@ -51,7 +51,6 @@ function showOrHideBlocks(account, balance) {
 
 function updateStats() {
 	vynos.ready().then(wallet => {
-		console.log(wallet.provider)		
 		let web3 = new Web3(wallet.provider)		
 		wallet.getAccount().then(account => {
 			if (!account) return showOrHideBlocks(null);
@@ -70,5 +69,5 @@ window.addEventListener('load', () => {
 	getEtherBlock = $('#getEtherBlock');
 	listTransactions = $('#listTransactions');
 	testBuy = $('#testBuy');
-	setInterval(updateStats, 20000)
+	setInterval(updateStats, 200)
 })
