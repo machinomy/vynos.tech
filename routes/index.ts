@@ -7,7 +7,7 @@ if (!FAUCET_ACCOUNT) { throw new Error('Please, set FAUCET_ACCOUNT env variable'
 const FAUCET_PASSWORD = process.env.FAUCET_PASSWORD
 if (!FAUCET_PASSWORD) { throw new Error('Please, set FAUCET_PASSWORD env variable') }
 
-const GIFT_AMOUNT = web3.toWei(0.01, 'ether')
+const GIFT_AMOUNT = web3.toWei(0.1, 'ether')
 
 router.get('/', (req: express.Request, res: express.Response, next: express.NextFunction): any => {
   res.render('index')
