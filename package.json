@@ -2,8 +2,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "yarn build && webpack && node bin/www.js",
-    "build": "tsc -p tsconfig.json && webpack",
+    "start": "yarn build && node bin/www.js",
+    "build": "gulp scss && tsc -p tsconfig.json && webpack",
     "lint": "tslint -t stylish -p '.' -e './node_modules/**/*.ts'"
   },
   "dependencies": {

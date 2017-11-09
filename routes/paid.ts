@@ -34,7 +34,7 @@ router.get('/:id', (req: express.Request, res: express.Response, next: express.N
 
 router.get('/:id/content', function(req: express.Request, res: express.Response, next: express.NextFunction) {
   let reqUrl = PAYWALL_GATEWAY
-  const headers = paywallHeaders(ARTICLES[req.params.id].price)
+  const headers = paywallHeaders(ARTICLES[req.params.id].price, req.params.id)
   parseToken(req, (error: Error, token: string) => {
     if (error) {
       res.set(headers).render(req.params.id + '/free', {layout: false})
