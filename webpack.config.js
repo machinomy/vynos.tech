@@ -5,20 +5,13 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 
 require('dotenv').config({ path: '.env' });
 
-var srcPath  = path.join(__dirname, '/public/javascripts/'),
-    distPath = path.join(__dirname, '/public/javascripts/');
+var srcPath  = path.join(__dirname, '/assets/javascripts/')
+var distPath = path.join(__dirname, '/public/javascripts/')
 
 const RECEIVER = process.env.RECEIVER;
 if (!RECEIVER) throw new Error('Please, set receiver address to RECEIVER env variable')
-
-const GATEWAY_URL = process.env.GATEWAY_URL;
-if (!GATEWAY_URL) throw new Error('Please, set gateway url to GATEWAY_URL env variable')
-
 const VYNOS_URL = process.env.VYNOS_URL;
 if (!VYNOS_URL) throw new Error('Please, set url to Vynos to VYNOS_URL env variable')
-
-const ETHEREUM_API = process.env.ETHEREUM_API;
-if (!ETHEREUM_API) throw new Error('Please, set ETHEREUM_API env variable')
 
 module.exports = {
     context: srcPath,
