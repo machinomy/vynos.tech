@@ -40,7 +40,7 @@ if (buyButton) {
 		vynos.ready().then(wallet => {
 			let web3 = new Web3(wallet.provider)
 			web3.eth.getAccounts(function (err, accounts) {
-				if (!accounts.length) return vynos.display();
+				if (!accounts || !accounts.length) return vynos.display();
 				let account = account[0]
 				if (!account) return vynos.display();
 				let title = 'Outline'
