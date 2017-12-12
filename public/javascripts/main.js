@@ -14,31 +14,36 @@ function vynosDisplay() {
 
 function getEther() {
 	vynos.ready().then(wallet => {
-		wallet.getAccount().then(account => {
-			$.ajax({
-				type: 'POST',
-				url: '/faucet/request',
-				data: JSON.stringify({address: account}),
-				contentType: 'application/json',
-				success: function (data) {
-					let txid = data.txid;
-					let etherscanUrl = 'https://ropsten.etherscan.io/tx/' + txid;
-					listTransactions.append('<p class="small blue margins"><a href="' + etherscanUrl + '" target="_blank">' + txid + '</a></p>');
-				}
-			})
+		var provider = wallet.provider
+		var web3 = new Web3(provider)
+		web3.eth.getAccounts(function (err, accounts) {
+			if (accounts && accounts[0]) {
+				let account = accounts[0]
+				$.ajax({
+					type: 'POST',
+					url: '/faucet/request',
+					data: JSON.stringify({ address: account }),
+					contentType: 'application/json',
+					success: function (data) {
+						let txid = data.txid;
+						let etherscanUrl = 'https://ropsten.etherscan.io/tx/' + txid;
+						listTransactions.append('<p class="small blue margins"><a href="' + etherscanUrl + '" target="_blank">' + txid + '</a></p>');
+					}
+				})
+			}
 		});
 	});
 	return false;
 }
 
 function disableBlock(block) {
-    block.addClass('b-line_disabled');
-    block.removeClass('b-line_light-gradient')
+	block.addClass('b-line_disabled');
+	block.removeClass('b-line_light-gradient')
 }
 
 function enableBlock(block) {
-    block.removeClass('b-line_disabled');
-    block.addClass('b-line_light-gradient')
+	block.removeClass('b-line_disabled');
+	block.addClass('b-line_light-gradient')
 }
 
 function showOrHideBlocks(account, balance) {
@@ -61,8 +66,9 @@ function showOrHideBlocks(account, balance) {
 function updateStats() {
 	vynos.ready().then(wallet => {
 		let web3 = new Web3(wallet.provider)
-		wallet.getAccount().then(account => {
-			if (!account) return showOrHideBlocks(null);
+		web3.eth.getAccounts(function (err, accounts) {
+			if (!accounts || !accounts.length) return showOrHideBlocks(null);
+			let account = accounts[0]
 			web3.eth.getBalance(account, (err, balance) => {
 				return showOrHideBlocks(account, web3.fromWei(balance, 'ether').toNumber());
 			});
@@ -80,7 +86,7 @@ window.addEventListener('load', () => {
 	testBuy = $('#testBuy');
 	setInterval(updateStats, 200)
 	vynos.ready().then(() => {
-		vynos.setContainerStyle({right: 'auto', left: document.getElementById('svg_logo').offsetLeft + 'px'});
+		vynos.setContainerStyle({ right: 'auto', left: document.getElementById('svg_logo').offsetLeft + 'px' });
 		if ($(window).scrollTop() < 605) {
 			vynos.display()
 		}
@@ -88,5 +94,5 @@ window.addEventListener('load', () => {
 })
 
 window.addEventListener('resize', () => {
-	vynos.setContainerStyle({right: 'auto', left: document.getElementById('svg_logo').offsetLeft + 'px'});
+	vynos.setContainerStyle({ right: 'auto', left: document.getElementById('svg_logo').offsetLeft + 'px' });
 })
