@@ -40,3 +40,5 @@ deploy/build
 .vscode/
 
 public/css/main.css
+
+.idea/

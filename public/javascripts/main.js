@@ -86,13 +86,6 @@ window.addEventListener('load', () => {
 	testBuy = $('#testBuy');
 	setInterval(updateStats, 200)
 	vynos.ready().then(() => {
-		vynos.setContainerStyle({ right: 'auto', left: document.getElementById('svg_logo').offsetLeft + 'px' });
-		if ($(window).scrollTop() < 605) {
 			vynos.display()
-		}
 	});
-})
-
-window.addEventListener('resize', () => {
-	vynos.setContainerStyle({ right: 'auto', left: document.getElementById('svg_logo').offsetLeft + 'px' });
 })

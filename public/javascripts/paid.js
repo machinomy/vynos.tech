@@ -1,3 +1,5 @@
+import * as Web3 from 'web3'
+
 document.write('<script src="' + window.VYNOS_URL + '"></script>')
 
 let loadContent = (token) => {
@@ -55,9 +57,11 @@ if (buyButton) {
 						console.log('Result: ', result)
 						buyButton.style.display = 'none'
 					}).catch(err => {
-						console.error(err)
-						if (err.message && canBeHandled(err.message)) showVynosNotification('Not enough funds, please refill the wallet', 10);
-						$(buyButton).removeClass('disabled').attr('disabled', false).html("READ MORE");
+						if (err) {
+							console.error(err)
+							if (err.message && canBeHandled(err.message)) showVynosNotification('Not enough funds, please refill the wallet', 10);
+							$(buyButton).removeClass('disabled').attr('disabled', false).html("READ MORE");
+						}
 					})
 				})
 			})
@@ -75,11 +79,4 @@ window.vynosDisplay = function () {
 window.addEventListener('load', () => {
 	let contentKey = $('meta[property="og:url"]').attr('content')
 	loadContent(localStorage[contentKey])
-	vynos.ready().then(() => {
-		vynos.setContainerStyle({right: 'auto', left: document.getElementById('header__logo').offsetLeft + 'px'});
-	});
-})
-
-window.addEventListener('resize', () => {
-	vynos.setContainerStyle({right: 'auto', left: document.getElementById('header__logo').offsetLeft + 'px'});
 })

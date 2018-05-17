@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "target": "es5",
+        "target": "es2017",
         "module": "commonjs",
         "moduleResolution": "node",
         "declaration": false,
@@ -11,7 +11,7 @@
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "sourceMap": false,
-        "lib": ["es2015.collection", "es2015", "dom"]
+        "lib": ["es2015.collection", "es2017", "dom"]
     },
    "include": [
       "node_modules/*/index.d.ts",
