@@ -9,7 +9,7 @@ export function paywallHeaders (price: string = '1', meta: string = 'contentidex
   headers['Paywall-Version'] = '0.0.3'
   headers['Paywall-Price'] = price
   headers['Paywall-Address'] = PAYWALL_ADDRESS
-  headers['Paywall-Gateway'] = PAYWALL_GATEWAY + '/v1/accept'
+  headers['Paywall-Gateway'] = PAYWALL_GATEWAY + '/payments/accept'
   headers['Paywall-Meta'] = meta
   return headers
 }

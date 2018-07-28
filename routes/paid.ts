@@ -9,7 +9,7 @@ import { RequestResponse, RequiredUriUrl, CoreOptions } from 'request'
 const request: (opts: RequiredUriUrl & CoreOptions) => Promise<RequestResponse> = Promise.promisify(require('request'))
 import ARTICLES from '../helpers/articles'
 
-const PAYWALL_GATEWAY = process.env.GATEWAY_URL + '/v1/verify'
+const PAYWALL_GATEWAY = process.env.GATEWAY_URL + '/payments/verify'
 if (!PAYWALL_GATEWAY) { throw new Error('Please, set GATEWAY_URL env variable') }
 
 const parseToken = (req: express.Request, callback: Function) => {
@@ -37,21 +37,25 @@ router.get('/:id/content', function(req: express.Request, res: express.Response,
   const headers = paywallHeaders(ARTICLES[req.params.id].price, req.params.id)
   parseToken(req, (error: Error, token: string) => {
     if (error) {
-      res.set(headers).render(req.params.id + '/free', {layout: false})
+      res.set(headers).render(req.params.id + '/free', { layout: false })
       return
     }
     let price = headers['Paywall-Price']
     let meta = headers['Paywall-Meta']
-    request({
-      method: 'GET',
-      uri: reqUrl + '?' + `token=${token}&price=${price}&meta=${meta}`
-    }).then((response: RequestResponse) => {
-      let status = JSON.parse(response.body).status
-      if (status === 'ok') {
-        res.render(req.params.id + '/full', {layout: false})
-      } else {
-        res.set(headers).render(req.params.id + '/free', {layout: false})
-      }
-    })
+    if (!token || token === 'undefined') {
+      res.set(headers).render(req.params.id + '/free', { layout: false })
+    } else {
+      request({
+        method: 'GET',
+        uri: reqUrl + '/' + token
+      }).then((response: RequestResponse) => {
+        const status = JSON.parse(response.body).status
+        if (status === 'ok') {
+          res.render(req.params.id + '/full', { layout: false })
+        } else {
+          res.set(headers).render(req.params.id + '/free', { layout: false })
+        }
+      })
+    }
   })
 })
