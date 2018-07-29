@@ -1,6 +1,6 @@
 import * as Web3 from 'web3'
 
-document.write('<script src="' + window.VYNOS_URL + '"></script>')
+// document.write('<script src="' + window.VYNOS_URL + '"></script>')
 
 let loadContent = (token) => {
 	$.ajax({

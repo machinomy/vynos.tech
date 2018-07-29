@@ -1,6 +1,6 @@
 import * as $ from "jquery"
 
-document.write('<script src="' + window.VYNOS_URL + '"></script>')
+// document.write('<script src="' + window.VYNOS_URL + '"></script>')
 
 window.addEventListener("load", function () {
 	var displayButton = document.getElementById('display')
